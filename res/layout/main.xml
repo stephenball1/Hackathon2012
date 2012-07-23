@@ -8,5 +8,58 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/hello" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="1" >
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:layout_row="1"
+            android:ems="10"
+            android:hint="Flight Number" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:layout_row="2"
+            android:ems="10"
+            android:hint="Flight Date" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:layout_row="3"
+            android:text="Submit" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="116dp"
+            android:layout_column="0"
+            android:layout_gravity="fill_horizontal"
+            android:layout_row="0" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="73dp"
+            android:layout_column="0"
+            android:layout_gravity="fill_horizontal"
+            android:layout_row="1" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="85dp"
+            android:layout_column="0"
+            android:layout_gravity="fill_horizontal"
+            android:layout_row="2" />
+    </GridLayout>
 
 </LinearLayout>
