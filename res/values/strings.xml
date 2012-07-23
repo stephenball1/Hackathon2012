@@ -3,5 +3,7 @@
 
     <string name="hello">Hello World, Hackathon2012Activity!</string>
     <string name="app_name">Hackathon2012</string>
+    <string name="FlightNumber">Flight Number</string>
+    <string name="FlightDate">Flight Date</string>
 
 </resources>
