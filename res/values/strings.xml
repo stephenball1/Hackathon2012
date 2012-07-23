@@ -6,5 +6,6 @@
     <string name="FlightNumber">Flight Number</string>
     <string name="FlightDate">Flight Date</string>
     <string name="Submit">Submit</string>
+    <string name="movieTitle">Choose a Movie</string>
 
 </resources>
