@@ -14,6 +14,7 @@ public class Hackathon2012Activity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
         Button submitButton = (Button)findViewById(R.id.button1);
         
         submitButton.setOnClickListener(new View.OnClickListener() {
