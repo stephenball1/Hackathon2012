@@ -12,7 +12,6 @@
         android:label="@string/app_name" >
         <activity
             android:name=".Hackathon2012Activity"
-            android:label="@string/app_name"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainScreen" android:theme="@android:style/Theme.Holo.Light"></activity>
     </application>
 
 </manifest>
