@@ -1,6 +1,5 @@
 package com.viasat;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,9 +22,9 @@ public class WatchMovie extends Activity {
         MediaController mc = new MediaController(this);
         videoView.setMediaController(mc);
         
-        Bundle b = getIntent().getExtras();
+        /*Bundle b = getIntent().getExtras();
         
-        int movieId = b.getInt("id");
+        int movieId = b.getInt("id");*/
         
         String str = "http://10.11.90.17/movie.mp4";
         Uri uri = Uri.parse(str);
