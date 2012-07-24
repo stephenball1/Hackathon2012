@@ -57,7 +57,8 @@ public class MainScreen extends Activity {
 				final String director = curJson.getString("Director");
 				final String genre = curJson.getString("Genre");
 				final String rating = curJson.getString("Rated");
-				new DownloadImageTask(curButton,cur,title,description,length, director, genre, rating).execute(url);
+				final double review = curJson.getDouble("imdbRating");
+				new DownloadImageTask(curButton,cur,title,description,length, director, genre, rating,review).execute(url);
 				
 			}
 
@@ -88,9 +89,10 @@ public class MainScreen extends Activity {
 		final String director;
 		final String genre;
 		final String rating;
+		final double review;
 		
 		public DownloadImageTask(ImageButton button,int cur, String title, String description,
-				String length,String director,String genre,String rating) {
+				String length,String director,String genre,String rating,double review) {
 			this.button = button;
 			this.cur = cur;
 			this.title = title;
@@ -99,6 +101,7 @@ public class MainScreen extends Activity {
 			this.director = director;
 			this.rating = rating;
 			this.genre = genre;
+			this.review = review;
 		}
 
 		protected Bitmap doInBackground(String... urls) {
@@ -130,6 +133,7 @@ public class MainScreen extends Activity {
 					b.putString("director", director);
 					b.putString("genre",genre);
 					b.putString("rating", rating);
+					b.putDouble("review", review);
 					m.putExtras(b);
 					startActivity(m);
 				}
