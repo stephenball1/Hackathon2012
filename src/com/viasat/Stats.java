@@ -5,19 +5,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Vector;
-
-import org.apache.xmlrpc.client.XmlRpcClient;
-import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
-
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.provider.Settings;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -64,12 +57,6 @@ public class Stats extends Activity {
 			e1.printStackTrace();
 		}
         
-        
-        
-        
-        
-        
-        
         // Then get the watch button. This should only be active if the flight
         // is above 10000 feet.
         Button watchButton = (Button)findViewById(R.id.watchMovie);
@@ -109,6 +96,10 @@ public class Stats extends Activity {
 				finish();
 			}
 		});
+        
+        ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
         
     }
     
@@ -183,6 +174,17 @@ public class Stats extends Activity {
     	}
     	return true;
     }
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case android.R.id.home:
+	            finish();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
     
 
 

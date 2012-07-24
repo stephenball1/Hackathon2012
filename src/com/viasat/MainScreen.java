@@ -30,7 +30,7 @@ public class MainScreen extends Activity {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(false);
 		actionBar.setDisplayShowTitleEnabled(false);
 
 		ArrayList<ImageButton> buttonList = new ArrayList<ImageButton>();
@@ -151,6 +151,20 @@ public class MainScreen extends Activity {
 		inflater.inflate(R.menu.menu_items, menu);
 		return true;
 	}
+	
+	/*@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case android.R.id.home:
+	            // app icon in action bar clicked; go home
+	            Intent intent = new Intent(this, Hackathon2012Activity.class);
+	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	            startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}*/
 
 	
 }
