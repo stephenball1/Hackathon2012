@@ -2,36 +2,7 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="3" >
-
-    <EditText
-        android:id="@+id/tweetText"
-        android:layout_width="268dp"
-        android:layout_height="124dp"
-        android:layout_column="1"
-        android:layout_columnSpan="2"
-        android:layout_gravity="left"
-        android:layout_margin="5px"
-        android:layout_row="1"
-        android:background="@color/transparentBlue"
-        android:ems="10"
-        android:hint="@string/hintStatus"
-        android:maxLength="160"
-        android:minLines="4"
-        android:padding="5px"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:typeface="serif" >
-    </EditText>
-
-    <Button
-        android:id="@+id/submitTweet"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_column="0"
-        android:layout_columnSpan="3"
-        android:layout_gravity="center_horizontal"
-        android:layout_row="3"
-        android:text="@string/tweet" />
+    android:columnCount="5" >
 
     <Space
         android:layout_width="21dp"
@@ -40,32 +11,102 @@
         android:layout_row="0" />
 
     <Space
+        android:layout_width="10dp"
+        android:layout_height="1dp"
+        android:layout_column="4"
+        android:layout_row="0" />
+
+    <Space
         android:layout_width="1dp"
-        android:layout_height="65dp"
+        android:layout_height="21dp"
         android:layout_column="0"
         android:layout_row="0" />
 
     <Space
-        android:layout_width="188dp"
+        android:layout_width="1dp"
+        android:layout_height="35dp"
+        android:layout_column="0"
+        android:layout_row="1" />
+
+    <TextView
+        android:id="@+id/tweetTitle"
+        android:layout_column="2"
+        android:layout_columnSpan="2"
+        android:layout_gravity="left|bottom"
+        android:layout_row="1"
+        android:text="@string/twitterTitle"
+        android:textColor="@color/exedeOrange"
+        android:textSize="@dimen/Big" />
+
+    <EditText
+        android:id="@+id/tweetText"
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:layout_column="0"
+        android:layout_columnSpan="4"
+        android:layout_gravity="left"
+        android:layout_row="3"
+        android:ems="10"
+        android:hint="@string/hintStatus"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="18dp"
+        android:layout_column="0"
+        android:layout_row="2" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="52dp"
+        android:layout_column="0"
+        android:layout_row="3" />
+
+    <Button
+        android:id="@+id/submitTweet"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_column="3"
+        android:layout_gravity="left"
+        android:layout_row="5"
+        android:text="@string/tweet" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="106dp"
+        android:layout_column="0"
+        android:layout_row="4" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="24dp"
+        android:layout_column="0"
+        android:layout_row="5" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="129dp"
+        android:layout_column="0"
+        android:layout_row="6" />
+
+    <Space
+        android:layout_width="56dp"
         android:layout_height="1dp"
         android:layout_column="1"
         android:layout_row="0" />
 
     <Space
-        android:layout_width="1dp"
-        android:layout_height="128dp"
-        android:layout_column="0"
-        android:layout_row="1" />
+        android:layout_width="48dp"
+        android:layout_height="1dp"
+        android:layout_column="2"
+        android:layout_row="0" />
 
     <Space
-        android:layout_width="1dp"
-        android:layout_height="74dp"
-        android:layout_column="0"
-        android:layout_row="2" />
-
-    <Space
-        android:layout_width="110dp"
-        android:layout_height="15dp"
-        android:layout_column="2" />
+        android:layout_width="194dp"
+        android:layout_height="78dp"
+        android:layout_column="3"
+        android:layout_row="6" />
 
 </GridLayout>
