@@ -3,7 +3,6 @@ package com.viasat;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -33,12 +32,12 @@ public class Hackathon2012Activity extends Activity {
 			public void onClick(View v) {
 				if(checkFlightInputs(v)) {
 					Intent intent = new Intent(Hackathon2012Activity.this,MainScreen.class);
+					
 					startActivity(intent);
 				}
 				
 			}
 		});
-        
     }
     
     public boolean checkFlightInputs(View view) {
@@ -57,40 +56,16 @@ public class Hackathon2012Activity extends Activity {
     		Toast.makeText(this, "Please enter a flight date", Toast.LENGTH_LONG).show();
     		return false;
     	}
-    	return true;
-    }
-    
-	/*private class intializeTask extends AsyncTask<Void, Void, Void> {
-    	
-    	boolean enabled;
-		int movie1;
-		int movie2;
-		int movie3;
-		int movie4;
-		int freeMovie;
-		
-		
-		public void initializeTask() {
-			this.enabled = false;
-			this.movie1 = 0;
-			this.movie2 = 0;
-			this.movie3 = 0;
-			this.movie4 = 0;
-			this.freeMovie = 0;
-
-		}
-		
-		@Override
-		protected Void doInBackground(Void... params) {
+    	try {
+        	int fn = Integer.parseInt(((EditText)findViewById(R.id.flightNum)).getText().toString());
+        	String date = ((EditText)findViewById(R.id.flightDate)).getText().toString();
 			Globals g = (Globals)getApplication();
-			g.setEnabled(this.enabled);
-			g.setMovie1(this.movie1);
-			g.setMovie2(this.movie2);
-			g.setMovie3(this.movie3);
-			g.setMovie4(this.movie4);
-			g.setFreeMovie(this.freeMovie);
-			return null;
-		}
-
-	}*/
+			g.setFlightNumber(fn);
+			g.setDate(date);
+			return true;
+    	} catch (NumberFormatException e) {
+    		Toast.makeText(this, "Please enter a valid flight number (numbers only)", Toast.LENGTH_LONG).show();
+    		return false;
+    	}	
+    }
 }
