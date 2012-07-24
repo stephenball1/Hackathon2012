@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -48,7 +49,7 @@ public class MovieActivity extends Activity {
         		b2.setEnabled(false);
 				//Intent intent = new Intent(MovieActivity.this,Stats.class);
 				//startActivity(intent);
-        		new CastVoteTask(bar).execute(id);
+        		new CastVoteTask(bar,id).execute(id);
 			}
         });
         
@@ -69,39 +70,36 @@ public class MovieActivity extends Activity {
     
     private class CastVoteTask extends AsyncTask<Integer,Void,Boolean> {
     	private ProgressBar bar;
+    	private int id;
     	
-		public CastVoteTask(ProgressBar bar) {
+		public CastVoteTask(ProgressBar bar, int id) {
 			this.bar = bar;
+			this.id = id;
 		}
 
 		@Override
 		protected Boolean doInBackground(Integer... params) {
 			Integer flightNum = 1234;
-	    	String url = "http://10.11.246.246/watchCheck.php?flightNum=" + flightNum.toString();
-	        	
-	    	try {
+			String deviceID = Settings.Secure.ANDROID_ID;
+	    	String url = "http://10.11.246.246/vote.php?movie="+id+"&flight="+flightNum.toString()+"&mac="+deviceID;
+			try {
 				URL urlObject = new java.net.URL(url);
 				InputStream is = urlObject.openStream();
 				int result = is.read() - 48;
-				System.out.println("result is: " + result);
-				if (result == 0) { return false;  }
-				else if (result > 4) {
-					//throw new Exception("Connection Error");
-					return false;
-				}
-				else {return true;  }
-
+				if (result == 1) { return true;  }
+				if (result > 2) { return false;  }
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
 				System.out.println("===========URL connect failed ==========\n");
 				e.printStackTrace();
+				return false;
 			}
 	    	catch (IOException e) {
 	    		System.out.println("========URL get content failed ========\n");
 	    		e.printStackTrace();
+	    		return false;
 	    	}
-			
-			return true;
+			return false;
 		}
 		
 		protected void onPostExecute(Boolean b) {
