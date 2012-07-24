@@ -1,5 +1,8 @@
 package com.viasat;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Vector;
 
@@ -101,46 +104,33 @@ public class Stats extends Activity {
      * @throws Exception 
      */
     private boolean canConnect() throws Exception {
-    	    	
-    	String hostString = "http://10.11.90.10:1337/mobilitySim/flightSim/connect/xmlrpc";
-	    String flightId = "9085824";
-	    Integer speedMultiplier = 400;
-	    Integer startPercent = 0;
-	    
-	    try
-	    {
-	      XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-	      URL hostURL = new URL( hostString );
-	      config.setServerURL( hostURL );
-	      XmlRpcClient server = new XmlRpcClient();
-	      server.setConfig( config );
-	      
-	      Vector<Comparable> simParams = new Vector<Comparable>();
-	      simParams.addElement( flightId );
-	      simParams.addElement( speedMultiplier );
-	      simParams.addElement( startPercent );
-	      Object result = server.execute( "simulateFlight", simParams );
-	      Integer simId = (Integer) result;
-	      
-	      Vector<Comparable> params = new Vector<Comparable>();
-	      params.addElement( simId );
+    	Integer flightNum = 1234;
+    	String url = "10.11.246.246/watchCheck.php?flightNum=" + flightNum.toString();
+        	
+    	try {
+			URL urlObject = new java.net.URL(url);
+			InputStream is = urlObject.openStream();
+			int result = is.read() - 48;
+			System.out.println("result is: " + result);
+			if (result == 0) { return false;  }
+			else if (result > 4) {
+				throw new Exception("Connection Error");
+			}
+			else {return true;  }
 
-	      
-	      result = server.execute( "getAltitude", params );
-	      Double alt = (Double) result;
-	      
-	      // kill the connection
-	      server = null;
-	      
-	      if (alt > 10000) { return true;  }
-	      else { return true;  }
-
-	    } 
-	    catch (Exception exception)
-	    {
-	      exception.printStackTrace();
-	      throw new Exception(exception.fillInStackTrace());
-	    }
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("===========URL connect failed ==========\n");
+			e.printStackTrace();
+		}
+    	catch (IOException e) {
+    		System.out.println("========URL get content failed ========\n");
+    		e.printStackTrace();
+    	}
+    	
+    	
+    	
+    	return true;
     	
     }
 
