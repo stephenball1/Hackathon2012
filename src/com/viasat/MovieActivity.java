@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class MovieActivity extends Activity {
         TextView rating = (TextView)findViewById(R.id.rating);
         TextView director = (TextView)findViewById(R.id.director);
         TextView length = (TextView)findViewById(R.id.length);
+        RatingBar ratingBar = (RatingBar)findViewById(R.id.ratingBar);
+        ratingBar.setRating((float)b.getDouble("review"));
         Button b2 = (Button)findViewById(R.id.button1);
         b2.setOnClickListener(new View.OnClickListener() {
         	@Override

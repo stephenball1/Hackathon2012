@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="13" >
-
+
     <TextView
         android:id="@+id/title"
-        android:layout_width="260dp"
+        android:layout_width="312dp"
         android:layout_column="1"
         android:layout_columnSpan="5"
         android:layout_gravity="right"
@@ -22,12 +22,14 @@
         android:layout_row="3"
         android:layout_rowSpan="3"
         android:src="@drawable/placeholder" />
-
+
     <RatingBar
-        android:id="@+id/ratingBar1"
+        android:id="@+id/ratingBar"
         style="@android:style/Widget.Holo.Light.RatingBar.Small"
         android:layout_column="5"
-        android:layout_row="4" />
+        android:layout_row="4"
+        android:numStars="10"
+        android:stepSize=".1" />
 
     <Button
         android:id="@+id/button1"
