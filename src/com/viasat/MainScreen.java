@@ -1,16 +1,9 @@
 package com.viasat;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import android.app.ActionBar;
@@ -18,7 +11,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -39,6 +31,7 @@ public class MainScreen extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
+
 		ArrayList<ImageButton> buttonList = new ArrayList<ImageButton>();
 		buttonList.add((ImageButton)findViewById(R.id.movie1));
 		buttonList.add((ImageButton)findViewById(R.id.movie2));
@@ -55,26 +48,17 @@ public class MainScreen extends Activity {
 			for(int i=0;i<4;i++) {
 				JSONObject curJson = json.getJSONObject(""+(i+1));
 				curButton = buttonList.get(i);
+				curButton.setEnabled(false);
 				String url =curJson.getString("Poster");
 				final String title = curJson.getString("Title")+" ("+curJson.getString("Year")+")";
 				final int cur=i;
 				final String length = curJson.getString("Runtime");
 				final String description = curJson.getString("Plot");
-				new DownloadImageTask(curButton).execute(url);
-				curButton.setOnClickListener(new View.OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						Intent m = new Intent(MainScreen.this,MovieActivity.class);
-						Bundle b = new Bundle();
-						b.putInt("id",cur+1);
-						b.putString("title", title);
-						b.putString("description", description);
-						b.putString("length", length);
-						m.putExtras(b);
-						startActivity(m);
-					}
-				});
+				final String director = curJson.getString("Director");
+				final String genre = curJson.getString("Genre");
+				final String rating = curJson.getString("Rated");
+				new DownloadImageTask(curButton,cur,title,description,length, director, genre, rating).execute(url);
+				
 			}
 
 		} catch (Exception e) {
@@ -96,10 +80,25 @@ public class MainScreen extends Activity {
 
 	}
 	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-		ImageButton bmImage;
-
-		public DownloadImageTask(ImageButton bmImage) {
-			this.bmImage = bmImage;
+		ImageButton button;
+		Integer cur;
+		final String title;
+		final String description;
+		final String length;
+		final String director;
+		final String genre;
+		final String rating;
+		
+		public DownloadImageTask(ImageButton button,int cur, String title, String description,
+				String length,String director,String genre,String rating) {
+			this.button = button;
+			this.cur = cur;
+			this.title = title;
+			this.description = description;
+			this.length = length;
+			this.director = director;
+			this.rating = rating;
+			this.genre = genre;
 		}
 
 		protected Bitmap doInBackground(String... urls) {
@@ -115,7 +114,27 @@ public class MainScreen extends Activity {
 		}
 
 		protected void onPostExecute(Bitmap result) {
-			bmImage.setImageBitmap(Bitmap.createScaledBitmap(result,bmImage.getDrawable().getBounds().width(),bmImage.getDrawable().getBounds().height(),false));
+			final Bitmap scaledBitmap = Bitmap.createScaledBitmap(result,button.getDrawable().getBounds().width(),button.getDrawable().getBounds().height(),false);
+			button.setImageBitmap(scaledBitmap);
+			button.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Intent m = new Intent(MainScreen.this,MovieActivity.class);
+					Bundle b = new Bundle();
+					b.putInt("id",cur+1);
+					b.putString("title", title);
+					b.putString("description", description);
+					b.putString("length", length);
+					b.putParcelable("poster", scaledBitmap);
+					b.putString("director", director);
+					b.putString("genre",genre);
+					b.putString("rating", rating);
+					m.putExtras(b);
+					startActivity(m);
+				}
+			});
+			button.setEnabled(true);
 		}
 	}
 

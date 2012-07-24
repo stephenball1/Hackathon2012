@@ -2,9 +2,12 @@ package com.viasat;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MovieActivity extends Activity {
@@ -14,10 +17,16 @@ public class MovieActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.movie);
         Bundle b = getIntent().getExtras();
         id = b.getInt("id");
-        
-        setContentView(R.layout.movie);
+        ImageView poster = (ImageView)findViewById(R.id.poster);
+        Bitmap image = b.getParcelable("poster");
+        TextView title = (TextView)findViewById(R.id.title);
+        TextView description = (TextView)findViewById(R.id.description);
+        description.setText(b.getString("description"));
+        poster.setImageBitmap(image);
+        title.setText(b.getString("title"));
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
