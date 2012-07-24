@@ -44,6 +44,7 @@ public class MainScreen extends Activity {
 		String line = null;
 		JSONObject json = null;
 		Globals g = (Globals)getApplication();
+		new PopulateGlobalsTask(g).execute();
 		if(g.getFreeMovie()>0 && g.getFreeMovie()<5) buttonList.get(g.getFreeMovie()-1).getBackground().setColorFilter(0xFFEF701F,PorterDuff.Mode.OVERLAY);
 		try {
 			line = br.readLine();

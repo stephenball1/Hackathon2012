@@ -39,7 +39,6 @@ public class Hackathon2012Activity extends Activity {
 			public void onClick(View v) {
 				if(checkFlightInputs(v)) {
 					Intent intent = new Intent(Hackathon2012Activity.this,MainScreen.class);
-					
 					startActivity(intent);
 				}
 				

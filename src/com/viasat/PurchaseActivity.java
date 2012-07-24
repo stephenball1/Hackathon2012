@@ -9,6 +9,6 @@ public class PurchaseActivity extends Activity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.standard);
+		setContentView(R.layout.purchase);
 	}
 }
