@@ -8,6 +8,7 @@ public class Globals extends Application{
 	private int movie2 = 0;
 	private int movie3 = 0;
 	private int movie4 = 0;
+	private int freeMovie = 0;
 	
 	public int getMovie1() {
 		return movie1;
@@ -48,4 +49,14 @@ public class Globals extends Application{
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	
+	public int getFreeMovie() {
+		return this.freeMovie;
+	}
+	
+	public void setFreeMovie(int freeMovie) {
+		this.freeMovie = freeMovie;
+	}
+	
+	
 }

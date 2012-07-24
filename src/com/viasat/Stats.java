@@ -105,7 +105,7 @@ public class Stats extends Activity {
      */
     private boolean canConnect() throws Exception {
     	Integer flightNum = 1234;
-    	String url = "10.11.246.246/watchCheck.php?flightNum=" + flightNum.toString();
+    	String url = "http://10.11.246.246/watchCheck.php?flightNum=" + flightNum.toString();
         	
     	try {
 			URL urlObject = new java.net.URL(url);

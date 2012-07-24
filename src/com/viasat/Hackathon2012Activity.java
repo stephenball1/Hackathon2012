@@ -1,13 +1,19 @@
 package com.viasat;
 
+import java.io.InputStream;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class Hackathon2012Activity extends Activity {
@@ -16,6 +22,9 @@ public class Hackathon2012Activity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        new intializeTask();
+        
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         ActionBar actionBar = getActionBar();
@@ -55,4 +64,38 @@ public class Hackathon2012Activity extends Activity {
     	}
     	return true;
     }
+    
+	private class intializeTask extends AsyncTask<Void, Void, Void> {
+    	
+    	boolean enabled;
+		int movie1;
+		int movie2;
+		int movie3;
+		int movie4;
+		int freeMovie;
+		
+		
+		public void initializeTask() {
+			this.enabled = false;
+			this.movie1 = 0;
+			this.movie2 = 0;
+			this.movie3 = 0;
+			this.movie4 = 0;
+			this.freeMovie = 0;
+
+		}
+		
+		@Override
+		protected Void doInBackground(Void... params) {
+			Globals g = (Globals)getApplication();
+			g.setEnabled(this.enabled);
+			g.setMovie1(this.movie1);
+			g.setMovie2(this.movie2);
+			g.setMovie3(this.movie3);
+			g.setMovie4(this.movie4);
+			g.setFreeMovie(this.freeMovie);
+			return null;
+		}
+
+	}
 }
