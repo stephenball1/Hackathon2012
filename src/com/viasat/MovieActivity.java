@@ -2,10 +2,13 @@ package com.viasat;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -31,6 +34,15 @@ public class MovieActivity extends Activity {
         TextView length = (TextView)findViewById(R.id.length);
         RatingBar ratingBar = (RatingBar)findViewById(R.id.ratingBar);
         ratingBar.setRating((float)b.getDouble("review"));
+        Button b2 = (Button)findViewById(R.id.button1);
+        b2.setOnClickListener(new View.OnClickListener() {
+        	@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MovieActivity.this,Stats.class);
+				startActivity(intent);
+			}
+        });
+        
         description.setText(b.getString("description"));
         title.setText(b.getString("title"));
         genre.setText(b.getString("genre"));
