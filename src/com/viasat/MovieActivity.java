@@ -13,6 +13,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -40,19 +41,6 @@ public class MovieActivity extends Activity {
         TextView length = (TextView)findViewById(R.id.length);
         RatingBar ratingBar = (RatingBar)findViewById(R.id.ratingBar);
         ratingBar.setRating((float)b.getDouble("review"));
-        final Button b2 = (Button)findViewById(R.id.button1);
-		final ProgressBar bar = (ProgressBar)findViewById(R.id.progressBar);
-        b2.setOnClickListener(new View.OnClickListener() {
-        	@Override
-			public void onClick(View v) {
-        		bar.setVisibility(View.VISIBLE);
-        		b2.setEnabled(false);
-				//Intent intent = new Intent(MovieActivity.this,Stats.class);
-				//startActivity(intent);
-        		new CastVoteTask(bar,id).execute(id);
-			}
-        });
-        
         description.setText(b.getString("description"));
         title.setText(b.getString("title"));
         genre.setText(b.getString("genre"));
@@ -60,11 +48,60 @@ public class MovieActivity extends Activity {
         director.setText(b.getString("director"));
         length.setText(b.getString("length"));
         poster.setImageBitmap(image);
+        final Button b2 = (Button)findViewById(R.id.button1);
+		final ProgressBar bar = (ProgressBar)findViewById(R.id.progressBar);
+        Globals g = (Globals)getApplication();
+        OnClickListener listener = null;
+        if(g.hasVoted() && !g.isEnabled()) {
+            b2.setEnabled(false);
+        }
+        else if(g.isEnabled() && (id==g.getFreeMovie() || g.hasPurchased())) {
+        	listener = new View.OnClickListener() {
+            	@Override
+    			public void onClick(View v) {
+            		bar.setVisibility(View.VISIBLE);
+            		b2.setEnabled(false);
+    				Intent intent = new Intent(MovieActivity.this,WatchMovie.class);
+    				Bundle b = new Bundle();
+    				b.putInt("id", id);
+    				startActivity(intent);
+    			}
+            };
+            b2.setEnabled(true);
+            b2.setText("Watch");
+        }
+        else if(g.isEnabled() && id!=g.getFreeMovie()) {
+        	listener = new View.OnClickListener() {
+            	@Override
+    			public void onClick(View v) {
+            		bar.setVisibility(View.VISIBLE);
+            		b2.setEnabled(false);
+    				Intent intent = new Intent(MovieActivity.this,Stats.class);
+    				startActivity(intent);
+    			}
+            };
+            b2.setEnabled(true);
+            b2.setText("Purchase");
+        }
+        else {
+        	listener = new View.OnClickListener() {
+            	@Override
+    			public void onClick(View v) {
+            		bar.setVisibility(View.VISIBLE);
+            		b2.setEnabled(false);
+            		new CastVoteTask(bar,id).execute(id);
+    			}
+            };
+            b2.setEnabled(true);
+        }
+        
+        b2.setOnClickListener(listener);
+        
+        
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 
-        Toast.makeText(this, "id: "+id, Toast.LENGTH_LONG);
         
     }
     
@@ -110,10 +147,8 @@ public class MovieActivity extends Activity {
 					//startActivity(intent);
 				}
 			});
-		}
-    	
+		}    	
     }
-
     
     
 }

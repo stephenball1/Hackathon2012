@@ -10,6 +10,7 @@ public class Globals extends Application{
 	private int movie4 = 0;
 	private int freeMovie = 0;
 	private boolean voted = false;
+	private boolean purchased = false;
 	
 	public int getMovie1() {
 		return movie1;
@@ -65,6 +66,14 @@ public class Globals extends Application{
 
 	public void setVoted(boolean voted) {
 		this.voted = voted;
+	}
+
+	public boolean hasPurchased() {
+		return purchased;
+	}
+
+	public void setPurchased(boolean purchased) {
+		this.purchased = purchased;
 	}
 	
 	
