@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World, Hackathon2012Activity!</string>
-    <string name="app_name">Hackathon2012</string>
+    <string name="app_name">Exede in the Air</string>
     <string name="FlightNumber">Flight Number</string>
     <string name="FlightDate">Flight Date</string>
     <string name="Submit">Submit</string>
