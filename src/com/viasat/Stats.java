@@ -5,10 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class Stats extends Activity {	
 	
@@ -41,42 +44,17 @@ public class Stats extends Activity {
         movie4Bar.setIndeterminate(false);
         movie4Bar.setProgress(g.getMovie4());
         
-        // Then get the watch button. This should only be active if the flight
-        // is above 10000 feet.
-        Button watchButton = (Button)findViewById(R.id.watchMovie);
-        if(!g.isEnabled()) {
-        	watchButton.setEnabled(false);
-        }
-       
-        watchButton.setOnClickListener(new View.OnClickListener() {
-        	@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Stats.this,WatchMovie.class);
-				startActivity(intent);
-			}
-        });
+        TextView movie1Title = (TextView)findViewById(R.id.movie1Title);
+        movie1Title.setText(g.getMovie1Title());
         
+        TextView movie2Title = (TextView)findViewById(R.id.movie2Title);
+        movie2Title.setText(g.getMovie2Title());
         
-        // Then get the info button. This will send the user back to the 
-        // movie info screen.
-        Button infoButton = (Button)findViewById(R.id.movieInfo);
-        infoButton.setOnClickListener(new View.OnClickListener() {
-        	@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Stats.this,MainScreen.class);
-				startActivity(intent);
-			}
-        });
+        TextView movie3Title = (TextView)findViewById(R.id.movie3Title);
+        movie3Title.setText(g.getMovie3Title());
         
-        // Lastly, get the refresh button. This will just refresh the activity
-        Button refreshButton = (Button)findViewById(R.id.refreshButton);
-        refreshButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				startActivity(getIntent()); 
-				finish();
-			}
-		});
+        TextView movie4Title = (TextView)findViewById(R.id.movie4Title);
+        movie4Title.setText(g.getMovie4Title());
         
         ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
@@ -93,6 +71,13 @@ public class Stats extends Activity {
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
+	}
+    
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.stats_menu, menu);
+		return true;
 	}
     
 

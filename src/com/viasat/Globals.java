@@ -13,9 +13,44 @@ public class Globals extends Application{
 	private String date = "qwerty";
 	private boolean voted = false;		// when you voted
 	private boolean purchased = false;	// if you purchased a plan
+	private String movie1Title = "";
+	private String movie2Title = "";
+	private String movie3Title = "";
+	private String movie4Title = "";
+	
 	
 	public int getMovie1() {
 		return movie1;
+	}
+	
+	public void setMovieTitle(int id,String title) {
+		if(id==1) movie1Title = title;
+		else if(id==2) movie2Title = title;
+		else if(id==3) movie3Title = title;
+		else if(id==4) movie4Title = title;
+	}
+	public String getMovie1Title() {
+		return movie1Title;
+	}
+
+	public String getMovie2Title() {
+		return movie2Title;
+	}
+
+	public String getMovie3Title() {
+		return movie3Title;
+	}
+
+	public void setMovie1Title(String movie1Title) {
+		this.movie1Title = movie1Title;
+	}
+
+	public void setMovie2Title(String movie2Title) {
+		this.movie2Title = movie2Title;
+	}
+
+	public void setMovie3Title(String movie3Title) {
+		this.movie3Title = movie3Title;
 	}
 
 	public void setMovie1(int movie1) {
@@ -92,5 +127,13 @@ public class Globals extends Application{
 	
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getMovie4Title() {
+		return movie4Title;
+	}
+
+	public void setMovie4Title(String movie4Title) {
+		this.movie4Title = movie4Title;
 	}
 }

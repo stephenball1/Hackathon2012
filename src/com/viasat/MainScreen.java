@@ -62,6 +62,7 @@ public class MainScreen extends Activity {
 				final String genre = curJson.getString("Genre");
 				final String rating = curJson.getString("Rated");
 				final double review = curJson.getDouble("imdbRating");
+				g.setMovieTitle(i+1, title);
 				new DownloadImageTask(curButton,cur,title,description,length, director, genre, rating,review).execute(url);
 				
 			}
