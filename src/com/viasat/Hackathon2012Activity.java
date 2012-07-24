@@ -23,12 +23,11 @@ public class Hackathon2012Activity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.main);
         Globals g = (Globals)getApplication();
         //new intializeTask();
-        new PopulateGlobalsTask(g).execute();
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
@@ -45,6 +44,7 @@ public class Hackathon2012Activity extends Activity {
 				
 			}
 		});
+        new PopulateGlobalsTask(g).execute();
         
         EditText dateEntry = (EditText)findViewById(R.id.flightDate);
         dateEntry.setClickable(true);
