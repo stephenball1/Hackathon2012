@@ -21,9 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainScreen" android:theme="@android:style/Theme.Holo.Light"></activity>
-        <activity android:name=".Stats"></activity>
-        <activity android:name=".WatchMovie"></activity>
+        <activity android:name=".MainScreen" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Stats" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="portrait"></activity>
+        <activity android:name=".WatchMovie" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="landscape"></activity>
         <activity android:name=".MovieActivity" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="portrait"></activity>
     </application>
 
