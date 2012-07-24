@@ -9,6 +9,7 @@ public class Globals extends Application{
 	private int movie3 = 0;
 	private int movie4 = 0;
 	private int freeMovie = 0;
+	private boolean voted = false;
 	
 	public int getMovie1() {
 		return movie1;
@@ -56,6 +57,14 @@ public class Globals extends Application{
 	
 	public void setFreeMovie(int freeMovie) {
 		this.freeMovie = freeMovie;
+	}
+
+	public boolean hasVoted() {
+		return voted;
+	}
+
+	public void setVoted(boolean voted) {
+		this.voted = voted;
 	}
 	
 	

@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -41,6 +42,8 @@ public class MainScreen extends Activity {
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		String line = null;
 		JSONObject json = null;
+		Globals g = (Globals)getApplication();
+		if(g.getFreeMovie()>0 && g.getFreeMovie()<5) buttonList.get(g.getFreeMovie()-1).getBackground().setColorFilter(0xFFEF701F,PorterDuff.Mode.OVERLAY);
 		try {
 			line = br.readLine();
 			json = new JSONObject(line);
