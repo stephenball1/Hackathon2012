@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".MainScreen" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="portrait"></activity>
         <activity android:name=".Stats" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="portrait"></activity>
-        <activity android:name=".WatchMovie" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="landscape"></activity>
+        <activity android:name=".WatchMovie" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:screenOrientation="landscape"></activity>
         <activity android:name=".MovieActivity" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="portrait"></activity>
     </application>
 

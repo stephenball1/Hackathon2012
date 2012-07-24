@@ -62,11 +62,11 @@ public class MovieActivity extends Activity {
 			listener = new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					bar.setVisibility(View.VISIBLE);
 					b2.setEnabled(false);
 					Intent intent = new Intent(MovieActivity.this,WatchMovie.class);
 					Bundle b = new Bundle();
 					b.putInt("id", id);
+					intent.putExtras(b);
 					startActivity(intent);
 				}
 			};
@@ -150,9 +150,9 @@ public class MovieActivity extends Activity {
 				g.setVoted(true);
 				runOnUiThread(new Runnable() {
 					public void run() {
+						bar.setVisibility(View.INVISIBLE);
 						Intent intent = new Intent(MovieActivity.this,Stats.class);
 						startActivity(intent);
-						bar.setVisibility(View.INVISIBLE);
 					}
 				});
 			}
