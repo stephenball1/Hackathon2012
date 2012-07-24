@@ -46,18 +46,6 @@
         android:layout_column="0"
         android:layout_row="0" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Space7"
-        android:layout_below="@+id/Space4"
-        android:layout_column="1"
-        android:layout_gravity="left|bottom"
-        android:layout_marginTop="234dp"
-        android:layout_row="4"
-        android:text="@string/purchase" />
-
     <Space
         android:id="@+id/Space7"
         android:layout_width="148dp"
@@ -80,27 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_row="5" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="276dp"
-        android:layout_height="173dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="31dp"
-        android:baselineAlignBottom="false"
-        android:clickable="false"
-        android:fitsSystemWindows="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:src="@drawable/title" />
-
     <TextView
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView1"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_alignRight="@+id/imageView1"
         android:clickable="false"
         android:ems="10"
         android:fitsSystemWindows="true"
@@ -108,5 +79,35 @@
         android:focusableInTouchMode="false"
         android:text="@string/purchaseAdd"
         android:textSize="40px" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="276dp"
+        android:layout_height="173dp"
+        android:layout_alignTop="@+id/Space2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="103dp"
+        android:baselineAlignBottom="false"
+        android:clickable="false"
+        android:fitsSystemWindows="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/title" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/purchase" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/jetblue" />
 
 </RelativeLayout>

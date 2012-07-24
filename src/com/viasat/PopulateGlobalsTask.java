@@ -6,31 +6,37 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.provider.Settings;
+import android.provider.Settings.Secure;
 
 
 public class PopulateGlobalsTask extends AsyncTask<Void,Void,Void> {
 	Globals g;
+	Context context;
 	
-	public PopulateGlobalsTask(Globals g) {
+	public PopulateGlobalsTask(Globals g, Context c) {
 		this.g = g;
+		this.context = c;
 	}
 	
 	@Override
 	protected Void doInBackground(Void... arg0) {
 		
 		Integer flightNum = g.getFlightNumber();
-		String deviceID = Settings.Secure.ANDROID_ID;
+		String deviceID = Secure.getString(context.getContentResolver(),Secure.ANDROID_ID);
 		String checkVoteURL ="http://10.11.246.246/vote.php?movie=false&flight="+flightNum.toString()+"&mac="+deviceID;
-		String getOtherDataURL = "http://10.11.246.246/test.php";
+		String getOtherDataURL = "http://10.11.246.246/getData.php?flightNum="+flightNum.toString();
     	try {
     		// See if user has voted yet or not.
+    		System.out.println(checkVoteURL);
 			URL checkVoteURLObject = new java.net.URL(checkVoteURL);
 			InputStream is = checkVoteURLObject.openStream();
 			int result = is.read() - 48;
+			System.out.println("====== RESULT IS ======: " + result);
 			if (result == 0) { g.setVoted(false);  }
-			else if (result == 2) { g.setVoted(true);  }
+			else if (result > 0) { g.setVoted(true);  }
 			else {
 				g.setVoted(false);
 				System.out.println("Error in Check Vote URL. did not return 0 or 2");

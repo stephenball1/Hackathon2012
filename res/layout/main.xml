@@ -12,7 +12,6 @@
         android:layout_height="74dp"
         android:layout_column="2"
         android:layout_columnSpan="2"
-        android:layout_gravity="left"
         android:layout_row="1"
         android:src="@drawable/jetblue" />
 
@@ -46,7 +45,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_row="4"
         android:text="@string/Submit" />
-
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="140dp"

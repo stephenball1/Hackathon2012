@@ -20,7 +20,7 @@ public class Stats extends Activity {
 
 		// Get all the widget objects on the stats activity.
 		Globals g = (Globals)getApplication();
-		new PopulateGlobalsTask(g).execute();
+		new PopulateGlobalsTask(g,this).execute();
 
 		// First get the four progress bars. 
 		ProgressBar movie1Bar = (ProgressBar)findViewById(R.id.movie1Bar);

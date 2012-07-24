@@ -33,6 +33,8 @@ public class MovieActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.movie);
 		Bundle b = getIntent().getExtras();
+		g = (Globals)getApplication();
+		new PopulateGlobalsTask(g,this).execute();
 		id = b.getInt("id");
 		ImageView poster = (ImageView)findViewById(R.id.poster);
 		Bitmap image = b.getParcelable("poster");
@@ -53,8 +55,11 @@ public class MovieActivity extends Activity {
 		poster.setImageBitmap(image);
 		final Button b2 = (Button)findViewById(R.id.button1);
 		final ProgressBar bar = (ProgressBar)findViewById(R.id.progressBar);
-		g = (Globals)getApplication();
 		OnClickListener listener = null;
+		
+		System.out.println("========== hasVoted ========== : " + g.hasVoted() );
+		System.out.println("========== isEnabled ========= : " + g.isEnabled() );
+		
 		if(g.hasVoted() && !g.isEnabled()) {
 			b2.setEnabled(false);
 		}
@@ -93,6 +98,7 @@ public class MovieActivity extends Activity {
 				public void onClick(View v) {
 					bar.setVisibility(View.VISIBLE);
 					b2.setEnabled(false);
+					g.setVoted(true);
 					new CastVoteTask(bar,id,t).execute(id);
 				}
 			};
@@ -121,7 +127,8 @@ public class MovieActivity extends Activity {
 
 		@Override
 		protected Boolean doInBackground(Integer... params) {
-			Integer flightNum = 1234;
+			Globals g = (Globals)getApplication();
+			Integer flightNum = g.getFlightNumber();
 			String deviceID = Secure.getString(context.getContentResolver(),Secure.ANDROID_ID);//Settings.Secure.ANDROID_ID;
 			String url = "http://10.11.246.246/vote.php?movie="+id+"&flight="+flightNum.toString()+"&mac="+deviceID;
 			System.out.println(url);
@@ -129,7 +136,7 @@ public class MovieActivity extends Activity {
 				URL urlObject = new java.net.URL(url);
 				InputStream is = urlObject.openStream();
 				int result = is.read() - 48;
-				if (result >= 1) { return true;  }
+				if (result == 1) { return true;  }
 				if (result > 1) { return false;  }
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block 
@@ -147,7 +154,6 @@ public class MovieActivity extends Activity {
 
 		protected void onPostExecute(Boolean b) {
 			if(b) {
-				g.setVoted(true);
 				runOnUiThread(new Runnable() {
 					public void run() {
 						bar.setVisibility(View.INVISIBLE);
@@ -157,10 +163,11 @@ public class MovieActivity extends Activity {
 				});
 			}
 			else {
+				g.setVoted(true);
 				runOnUiThread(new Runnable() {
 					public void run() {
 						bar.setVisibility(View.INVISIBLE);
-						Toast.makeText(context,"An error has occurred. Please try again.",Toast.LENGTH_LONG).show();
+						Toast.makeText(context,"An error has occurred. Only one vote per person is allowed.",Toast.LENGTH_LONG).show();
 					}
 				});
 			}

@@ -43,7 +43,6 @@ public class Hackathon2012Activity extends Activity {
 				
 			}
 		});
-        new PopulateGlobalsTask(g).execute();
         
         EditText dateEntry = (EditText)findViewById(R.id.flightDate);
         dateEntry.setClickable(true);
@@ -89,6 +88,7 @@ public class Hackathon2012Activity extends Activity {
 			Globals g = (Globals)getApplication();
 			g.setFlightNumber(fn);
 			g.setDate(date);
+	        new PopulateGlobalsTask(g,this).execute();
 			return true;
     	} catch (NumberFormatException e) {
     		Toast.makeText(this, "Please enter a valid flight number (numbers only)", Toast.LENGTH_LONG).show();
