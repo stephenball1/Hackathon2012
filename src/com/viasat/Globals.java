@@ -11,6 +11,8 @@ public class Globals extends Application{
 	private int freeMovie = 0;
 	private boolean voted = false;
 	private boolean purchased = false;
+	private int flightNumber;
+	private String date;
 	
 	public int getMovie1() {
 		return movie1;
@@ -76,5 +78,19 @@ public class Globals extends Application{
 		this.purchased = purchased;
 	}
 	
+	public int getFlightNumber() {
+		return this.flightNumber;
+	}
 	
+	public void setFlightNumber(int fn) {
+		this.flightNumber = fn;
+	}
+	
+	public String getDate() {
+		return this.date;
+	}
+	
+	public void setDate(String date) {
+		this.date = date;
+	}
 }
