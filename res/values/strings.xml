@@ -21,4 +21,6 @@
     <string name="hintStatus">Enter a 140 character tweet</string>
     <string name="tweet">Tweet</string>
     <string name="share">Share!</string>
+    <string name="purchaseAdd">Purchase Exede In the Air for premium internet access and more available movies! Brought to you by Exede and JetBlue</string>
+    <string name="purchase">Purchase</string>
 </resources>
