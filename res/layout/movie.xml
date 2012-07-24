@@ -2,13 +2,13 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="13" >
-
+    android:columnCount="15" >
+
     <TextView
         android:id="@+id/title"
         android:layout_width="312dp"
         android:layout_column="1"
-        android:layout_columnSpan="5"
+        android:layout_columnSpan="6"
         android:layout_gravity="right"
         android:layout_row="1"
         android:text="@string/movie"
@@ -22,11 +22,12 @@
         android:layout_row="3"
         android:layout_rowSpan="3"
         android:src="@drawable/placeholder" />
-
+
     <RatingBar
         android:id="@+id/ratingBar"
         style="@android:style/Widget.Holo.Light.RatingBar.Small"
         android:layout_column="5"
+        android:layout_columnSpan="2"
         android:layout_row="4"
         android:numStars="10"
         android:stepSize=".1" />
@@ -36,13 +37,21 @@
         android:layout_column="5"
         android:layout_row="5"
         android:text="Button" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_column="6"
+        android:layout_gravity="left"
+        android:layout_row="5"
+        android:indeterminate="true"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="318dp"
         android:layout_height="123dp"
         android:layout_column="1"
-        android:layout_columnSpan="6"
+        android:layout_columnSpan="7"
         android:layout_gravity="left"
         android:layout_row="6"
         android:text="TextView" />
@@ -59,7 +68,7 @@
         android:id="@+id/director"
         android:layout_width="252dp"
         android:layout_column="3"
-        android:layout_columnSpan="4"
+        android:layout_columnSpan="5"
         android:layout_gravity="bottom"
         android:layout_row="8"
         android:text="TextView" />
@@ -76,7 +85,7 @@
         android:id="@+id/length"
         android:layout_width="250dp"
         android:layout_column="3"
-        android:layout_columnSpan="4"
+        android:layout_columnSpan="5"
         android:layout_gravity="bottom"
         android:layout_row="10"
         android:text="TextView" />
@@ -93,7 +102,7 @@
         android:id="@+id/rating"
         android:layout_width="252dp"
         android:layout_column="3"
-        android:layout_columnSpan="4"
+        android:layout_columnSpan="5"
         android:layout_gravity="left"
         android:layout_row="12"
         android:text="TextView" />
@@ -110,7 +119,7 @@
         android:id="@+id/genre"
         android:layout_width="255dp"
         android:layout_column="3"
-        android:layout_columnSpan="4"
+        android:layout_columnSpan="5"
         android:layout_gravity="bottom"
         android:layout_row="14"
         android:layout_rowSpan="2"
@@ -145,9 +154,9 @@
         android:layout_row="0" />
 
     <Space
-        android:layout_width="200dp"
+        android:layout_width="289dp"
         android:layout_height="1dp"
-        android:layout_column="6"
+        android:layout_column="7"
         android:layout_gravity="fill_horizontal"
         android:layout_row="0" />
 
@@ -208,6 +217,20 @@
         android:layout_width="18dp"
         android:layout_height="1dp"
         android:layout_column="4"
+        android:layout_row="0" />
+
+    <Space
+        android:layout_width="92dp"
+        android:layout_height="1dp"
+        android:layout_column="5"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="0" />
+
+    <Space
+        android:layout_width="95dp"
+        android:layout_height="1dp"
+        android:layout_column="6"
+        android:layout_gravity="fill_horizontal"
         android:layout_row="0" />
 
 </GridLayout>

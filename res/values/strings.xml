@@ -16,4 +16,6 @@
     <string name="lengthLabel">Length:</string>
     <string name="ratingLabel">Rating:</string>
     <string name="genreLabel">Genre:</string>
+    <string name="view_results">View Results</string>
+    <string name="results">Results</string>
 </resources>

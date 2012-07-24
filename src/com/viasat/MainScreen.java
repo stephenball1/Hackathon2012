@@ -145,7 +145,7 @@ public class MainScreen extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main_activity, menu);
+		inflater.inflate(R.menu.menu_items, menu);
 		return true;
 	}
 
