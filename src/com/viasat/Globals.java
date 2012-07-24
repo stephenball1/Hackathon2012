@@ -3,14 +3,14 @@ package com.viasat;
 import android.app.Application;
 
 public class Globals extends Application{
-	private boolean enabled = false;
+	private boolean enabled = false;	//above 10000 ft
 	private int movie1 = 0;
 	private int movie2 = 0;
 	private int movie3 = 0;
 	private int movie4 = 0;
 	private int freeMovie = 0;
-	private boolean voted = false;
-	private boolean purchased = false;
+	private boolean voted = false;		// when you voted
+	private boolean purchased = false;	// if you purchased a plan
 	
 	public int getMovie1() {
 		return movie1;
