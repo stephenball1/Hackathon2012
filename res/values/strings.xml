@@ -10,5 +10,7 @@
     <string name="movie">[Movie Title]</string>
     <string name="directorLabel">Director:</string>
     <string name="lengthLabel">Length:</string>
+    <string name="ratingLabel">Rating:</string>
+    <string name="genreLabel">Genre:</string>
 
 </resources>

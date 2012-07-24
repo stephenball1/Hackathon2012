@@ -24,9 +24,19 @@ public class MovieActivity extends Activity {
         Bitmap image = b.getParcelable("poster");
         TextView title = (TextView)findViewById(R.id.title);
         TextView description = (TextView)findViewById(R.id.description);
+        TextView genre = (TextView)findViewById(R.id.genre);
+        TextView rating = (TextView)findViewById(R.id.rating);
+        TextView director = (TextView)findViewById(R.id.director);
+        TextView length = (TextView)findViewById(R.id.length);
+        
+        
         description.setText(b.getString("description"));
-        poster.setImageBitmap(image);
         title.setText(b.getString("title"));
+        genre.setText(b.getString("genre"));
+        rating.setText(b.getString("rating"));
+        director.setText(b.getString("director"));
+        length.setText(b.getString("length"));
+        poster.setImageBitmap(image);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
