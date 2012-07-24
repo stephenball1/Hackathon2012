@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -152,9 +153,9 @@ public class MainScreen extends Activity {
 		return true;
 	}
 	
-	/*@Override
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
+	    /*switch (item.getItemId()) {
 	        case android.R.id.home:
 	            // app icon in action bar clicked; go home
 	            Intent intent = new Intent(this, Hackathon2012Activity.class);
@@ -163,8 +164,11 @@ public class MainScreen extends Activity {
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
-	    }
-	}*/
+	    }*/
+	    Intent intent = new Intent(this, Stats.class);
+        startActivity(intent);
+        return true;
+	}
 
 	
 }

@@ -17,9 +17,9 @@ public class Hackathon2012Activity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
-        new intializeTask();
-        
+        Globals g = (Globals)getApplication();
+        //new intializeTask();
+        new PopulateGlobalsTask(g).execute();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         ActionBar actionBar = getActionBar();
@@ -60,7 +60,7 @@ public class Hackathon2012Activity extends Activity {
     	return true;
     }
     
-	private class intializeTask extends AsyncTask<Void, Void, Void> {
+	/*private class intializeTask extends AsyncTask<Void, Void, Void> {
     	
     	boolean enabled;
 		int movie1;
@@ -92,5 +92,5 @@ public class Hackathon2012Activity extends Activity {
 			return null;
 		}
 
-	}
+	}*/
 }
