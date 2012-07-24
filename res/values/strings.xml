@@ -7,5 +7,7 @@
     <string name="FlightDate">Flight Date</string>
     <string name="Submit">Submit</string>
     <string name="movieTitle">Choose a Movie</string>
+    <string name="watchMovie">Watch Free Movie!</string>
+    <string name="movieInfoScreen">See Movie Info</string>
 
 </resources>
