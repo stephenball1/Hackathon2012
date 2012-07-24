@@ -20,14 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".MainScreen" android:theme="@android:style/Theme.Holo.Light"></activity>
         <activity android:name=".Stats"></activity>
         <activity android:name=".WatchMovie"></activity>
-=======
-        <activity android:name=".MainScreen" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="portrait"></activity>
         <activity android:name=".MovieActivity" android:theme="@android:style/Theme.Holo.Light" android:screenOrientation="portrait"></activity>
->>>>>>> 490ead945b46ed8b1924527c19aa7248c9512ca3
     </application>
 
 </manifest>

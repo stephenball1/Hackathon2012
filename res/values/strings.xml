@@ -7,17 +7,13 @@
     <string name="FlightDate">Flight Date</string>
     <string name="Submit">Submit</string>
     <string name="movieTitle">Choose a Movie</string>
-<<<<<<< HEAD
     <string name="watchMovie">Watch Free Movie!</string>
     <string name="movieInfoScreen">Back to Movie Info</string>
     <string name="refresh">Refresh</string>
     <string name="statsNote">Can only watch above 10000 feet. Press refresh when electronic devices are allowed.</string>
-=======
     <string name="movie">[Movie Title]</string>
     <string name="directorLabel">Director:</string>
     <string name="lengthLabel">Length:</string>
     <string name="ratingLabel">Rating:</string>
     <string name="genreLabel">Genre:</string>
->>>>>>> 490ead945b46ed8b1924527c19aa7248c9512ca3
-
 </resources>
