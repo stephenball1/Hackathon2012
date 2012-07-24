@@ -34,6 +34,7 @@ public class Hackathon2012Activity extends Activity {
 				
 			}
 		});
+        
     }
     
     public boolean checkFlightInputs(View view) {
