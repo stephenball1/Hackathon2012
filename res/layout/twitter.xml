@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2" >
+    
+    <EditText
+        android:id="@+id/textStatus"
+        android:layout_width="fill_parent"
+        android:layout_height="152dp"
+        android:layout_margin="5px"
+        android:background="@color/transparentBlue"
+        android:hint="@string/hintStatus"
+        android:maxLength="160"
+        android:minLines="4"
+        android:padding="5px"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:typeface="serif" >
+</EditText>
+
+</GridLayout>
+
