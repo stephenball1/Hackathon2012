@@ -57,13 +57,13 @@
         android:text="@string/refresh" />
 
     <Button
-        android:id="@+id/watchMovie"
+        android:id="@+id/tweetSomething"
         style="?android:attr/buttonStyleSmall"
         android:layout_column="1"
         android:layout_gravity="left"
         android:layout_row="8"
         android:layout_rowSpan="2"
-        android:text="@string/watchMovie" />
+        android:text="@string/share" />
 
     <Space
         android:layout_width="21dp"

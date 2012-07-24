@@ -18,11 +18,9 @@ public class Stats extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stats);
         
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        
         // Get all the widget objects on the stats activity.
         Globals g = (Globals)getApplication();
+        new PopulateGlobalsTask(g).execute();
         
 		// First get the four progress bars. 
         ProgressBar movie1Bar = (ProgressBar)findViewById(R.id.movie1Bar);
@@ -41,17 +39,13 @@ public class Stats extends Activity {
         movie4Bar.setIndeterminate(false);
         movie4Bar.setProgress(g.getMovie4());
         
-        // Then get the watch button. This should only be active if the flight
-        // is above 10000 feet.
-        Button watchButton = (Button)findViewById(R.id.watchMovie);
-        if(!g.isEnabled()) {
-        	watchButton.setEnabled(false);
-        }
+        
+        Button tweetButton = (Button)findViewById(R.id.tweetSomething);
        
-        watchButton.setOnClickListener(new View.OnClickListener() {
+        tweetButton.setOnClickListener(new View.OnClickListener() {
         	@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(Stats.this,WatchMovie.class);
+				Intent intent = new Intent(Stats.this,TwitterActivity.class);
 				startActivity(intent);
 			}
         });

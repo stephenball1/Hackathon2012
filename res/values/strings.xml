@@ -19,4 +19,6 @@
     <string name="view_results">View Results</string>
     <string name="results">Results</string>
     <string name="hintStatus">Enter a 140 character tweet</string>
+    <string name="tweet">Tweet</string>
+    <string name="share">Share!</string>
 </resources>
