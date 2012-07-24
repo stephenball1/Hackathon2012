@@ -1,14 +1,22 @@
 package com.viasat;
 
+import java.util.Calendar;
+
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 public class Hackathon2012Activity extends Activity {
     /** Called when the activity is first created. */
@@ -38,6 +46,27 @@ public class Hackathon2012Activity extends Activity {
 				
 			}
 		});
+        
+        EditText dateEntry = (EditText)findViewById(R.id.flightDate);
+        dateEntry.setClickable(true);
+        dateEntry.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				showDatePickerDialog(v);	
+			}
+		});
+        dateEntry.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				if (hasFocus) {
+					showDatePickerDialog(v);
+				}
+			}
+		});
+        
+        
     }
     
     public boolean checkFlightInputs(View view) {
@@ -68,4 +97,42 @@ public class Hackathon2012Activity extends Activity {
     		return false;
     	}	
     }
+    
+    public void showDatePickerDialog(View v) {
+    	EditText date = (EditText)findViewById(R.id.flightDate);
+        DialogFragment newFragment = new DatePickerFragment(date);
+        newFragment.show(getFragmentManager(),"datePicker");
+        
+    }
+    
+    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+
+    	private EditText dateField;
+		public DatePickerFragment(EditText dateField) {
+			this.dateField = dateField;
+		}
+
+		@Override
+		public Dialog onCreateDialog(Bundle savedInstanceState) {
+			// Use the current date as the default date in the picker
+			final Calendar c = Calendar.getInstance();
+			int year = c.get(Calendar.YEAR);
+			int month = c.get(Calendar.MONTH);
+			int day = c.get(Calendar.DAY_OF_MONTH);
+			
+			// Create a new instance of DatePickerDialog and return it
+			return new DatePickerDialog(getActivity(), this, year, month, day);
+		}
+		
+		@Override
+		public void onDateSet(DatePicker view, int year, int month, int day) {
+		// Do something with the date chosen by the user
+			String date = Integer.toString(month) +"/"+ Integer.toString(day) +"/"+ Integer.toString(year);
+			System.out.println(date);
+			dateField.setText(date);
+		}
+
+
+}
+    
 }
