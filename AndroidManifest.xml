@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".MainScreen" android:theme="@android:style/Theme.Holo.Light"></activity>
         <activity android:name=".Stats"></activity>
+        <activity android:name=".WatchMovie"></activity>
     </application>
 
 </manifest>
